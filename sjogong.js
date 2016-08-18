@@ -7,10 +7,8 @@ $(document).ready(function(){
   });
 
   //cria o canvas da arena
-  $("#arena_div").append("<canvas id='arena' width='"+config.arenaX+"' height='"+config.arenaY+"' style='background-color:black;'></canvas>");
+  $("#arena_div").append("<canvas id='arena' width='"+arena.size.x+"' height='"+arena.size.y+"' style='background-color:black;'></canvas>");
   arena.canvas = document.getElementById("arena").getContext("2d");
-
-  console.log(arena.canvas);
 
   arena.num.forEach(function(n,i){
     arena.canvas.fillStyle=config.colors[n.value];
@@ -23,16 +21,16 @@ $(document).ready(function(){
     console.log("Iniciando os players...");
     players.forEach(function(player,index){
       console.log("Iniciando o player["+player.id+"]: "+player.name);
-      setInterval(function(player,index){
+      setInterval(function(player,index,arena){
         if(!player.running) {
           player.running = true;
-          player.go = config.bots[index](Object.create(player));
+          player.go = config.bots[index](Object.create(player),Object.create(arena));
           player.running = false;
         }
         else {
           console.log("O player["+player.id+"] ainda tá pensando...");
         }
-      },5,player,index);
+      },5,player,index,arena);
     });
 
     console.log("Iniciando o gameloop!!!");
@@ -61,29 +59,14 @@ $(document).ready(function(){
   },1000);
 });
 
-var bot1 = function(me){
-  var ret = 'up'
-  var g = random(0,4);
-  if(g==0) ret = 'up';
-  if(g==1) ret = 'right';
-  if(g==2) ret = 'down';
-  if(g==3) ret = 'left';
-  return ret;
-};
-
 var random = function(min,max){
   return Math.floor((Math.random()*(max-min))+min);
 };
 
 var config = {
-  arenaX: 1024, //tamanho da arena horizontal
-  arenaY: 768, //tamanho da arena vertical
   bots: [
-    bot1,bot1,bot1,bot1,bot1,bot1,bot1,bot1,bot1,bot1 //os bots que estao competindo (functions)
+    botExtremamenteBurro,botExtremamenteBurro,botExtremamenteBurro,botExtremamenteBurro,botExtremamenteBurro,botExtremamenteBurro,botExtremamenteBurro,botExtremamenteBurro,botExtremamenteBurro,botExtremamenteBurro //os bots que estao competindo (functions)
   ],
-  minNum: 1, //o menor numero que ira aparecer na arena
-  maxNum: 9, //o maior numero que ira aparecer na arena
-  qtdNum: 300, //a quantidade de cada um dos numeros que deve aparecer
   colors: [
     '#000080','#0000FF',
     '#008000','#008080','#0080FF','#00FF00','#00FF80','#00FFFF',
@@ -95,13 +78,18 @@ var config = {
 console.log(config);
 
 var arena = {
-  num:[]
+  num:[],
+  minNum: 1, //o menor numero que ira aparecer na arena
+  maxNum: 9, //o maior numero que ira aparecer na arena
+  qtdNum: 3000, //a quantidade de cada um dos numeros que deve aparecer
+  size: {x:2000,y:1000},
+  players:players
 };
 
 var players = [];
 for(var i=0;i<config.bots.length;i++) {
-  var r1 = random(0,config.arenaX);
-  var r2 = random(0,config.arenaY);
+  var r1 = random(0,arena.size.x);
+  var r2 = random(0,arena.size.y);
   players.push({
     pos: {
       x: r1,
@@ -114,11 +102,13 @@ for(var i=0;i<config.bots.length;i++) {
     points: 0
   });
 };
+players[0].name = "RANDOMIX";
+players[1].name = "BOT EXTREMAMENTE BURRO";
 
-for(var i=config.minNum;i<=config.maxNum;i++) { //para cada um dos numeros
-  for(var j=0;j<config.qtdNum;j++){
-    var r1 = random(0,config.arenaX);
-    var r2 = random(0,config.arenaY);
+for(var i=arena.minNum;i<=arena.maxNum;i++) { //para cada um dos numeros
+  for(var j=0;j<arena.qtdNum;j++){
+    var r1 = random(0,arena.size.x);
+    var r2 = random(0,arena.size.y);
     arena.num.push({
       x:r1,
       y:r2,
@@ -128,14 +118,14 @@ for(var i=config.minNum;i<=config.maxNum;i++) { //para cada um dos numeros
 };
 
 var playerStep = function(player){
-    if(player.go === 'up') player.pos.x--;
-    if(player.go === 'down') player.pos.x++;
-    if(player.go === 'left') player.pos.y--;
-    if(player.go === 'right') player.pos.y++;
+    if(player.go === 'up') player.pos.y--;
+    if(player.go === 'down') player.pos.y++;
+    if(player.go === 'left') player.pos.x--;
+    if(player.go === 'right') player.pos.x++;
     if(player.pos.x < 0) player.pos.x = 0;
     if(player.pos.y < 0) player.pos.y = 0;
-    if(player.pos.x > config.arenaX) player.pos.x = config.arenaX;
-    if(player.pos.y > config.arenaY) player.pos.y = config.arenaY;
+    if(player.pos.x > arena.size.x) player.pos.x = arena.size.x;
+    if(player.pos.y > arena.size.y) player.pos.y = arena.size.y;
 }
 var computePoints = function(arena,player){
   for(var i=0;i<arena.num.length;i++){
