@@ -15,9 +15,16 @@ var drawPlayersInfo = function(players){
 
 var drawArenaInfo = function(arena) {
   var arenainfo = $("#arena_info");
-  arenainfo.text = "";
+  arenainfo.text("");
+  var qtdnums = [];
 
+  for(var i=arena.minNum;i<=arena.maxNum;i++){
+    qtdnums.push(0);
+  }
   arena.num.forEach(function(num, index){
-    arenainfo.append("<p>"+num.value+": "+num.x+","+num.y+"</p>");
+    qtdnums[num.value-1]++;
+  });
+  qtdnums.forEach(function(qtdnum,index){
+    arenainfo.append("<p style='color:"+config.colors[index]+"'>"+(index+1)+": "+qtdnum+"</p>");
   });
 };

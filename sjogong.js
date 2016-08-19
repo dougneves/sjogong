@@ -54,6 +54,6 @@ $(document).ready(function(){
   console.log("Iniciando a atualização das pontuações...");
   setInterval(function(){
     drawPlayersInfo(players);
-    //drawArenaInfo(arena);
+    drawArenaInfo(arena);
   },1000);
 });

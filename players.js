@@ -6,7 +6,11 @@ arena.players = players;
 //players.push({name:"RANDOMIX",func:botRandom});
 //players.push({name:"BOT EXTREM-BURRO",func:botExtremamenteBurro});
 //players.push({name:"BOT MUITO-BURRO",func:botMuitoBurro});
-players.push({name:"BOT SO-BURRO",func:botBurro});
+players.push({name:"BOT BURRO 1",func:botBurro});
+players.push({name:"BOT BURRO 2",func:botBurro});
+players.push({name:"BOT BURRO 3",func:botBurro});
+players.push({name:"BOT BURRO 4",func:botBurro});
+players.push({name:"BOT BURRO 5",func:botBurro});
 
 //o resto é automático
 players.forEach(function(player,index){

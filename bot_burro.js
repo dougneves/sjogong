@@ -1,8 +1,8 @@
 //vai até o numero mais proximo dele, que seja o menor possível, e tenta desviar dos outros números enquando isso
 var botBurro = function(me,arena){
   var ret = 'up';
-  var numAim = arena.num[0];
-  var ultimaDistancia = calculaDistancia(numAim.x,numAim.y,me.pos.x,me.pos.y);
+  var numAim = {};
+  var ultimaDistancia = arena.size.x*arena.size.y;
   var menorDisponivel = arena.maxNum;
   var numsProximos = [];
 
