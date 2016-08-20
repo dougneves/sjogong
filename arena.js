@@ -1,9 +1,9 @@
 var arena = {
   num:[],
-  minNum: 1, //o menor numero que ira aparecer na arena
-  maxNum: 9, //o maior numero que ira aparecer na arena
-  qtdNum: 100, //a quantidade de cada um dos numeros que deve aparecer
-  size: {x:800,y:480}
+  minNum: config.minNum,
+  maxNum: config.maxNum,
+  qtdNum: config.qtdNum,
+  size: config.size
 };
 
 var populaArena = function(){

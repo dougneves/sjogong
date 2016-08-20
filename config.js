@@ -1,4 +1,8 @@
 var config = {
+  minNum: 1, //o menor numero que ira aparecer na arena
+  maxNum: 9, //o maior numero que ira aparecer na arena
+  qtdNum: 200, //a quantidade de cada um dos numeros que deve aparecer
+  size: {x:800,y:480}, //tamanho do tabuleiro
   playersInterval: 5,
   loopInterval: 6,
   colors: [

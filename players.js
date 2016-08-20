@@ -2,14 +2,14 @@ var players = [];
 arena.players = players;
 
 //para cada bot, da um nome e fala qual é a function aqui
-players.push({name:"RANDOMIX",func:botRandom});
-players.push({name:"BOT EXTREM-BURRO",func:botExtremamenteBurro});
-players.push({name:"BOT MUITO-BURRO",func:botMuitoBurro});
-players.push({name:"BOT BURRO 1",func:botBurro});
-//players.push({name:"BOT BURRO 2",func:botBurro});
-//players.push({name:"BOT BURRO 3",func:botBurro});
-//players.push({name:"BOT BURRO 4",func:botBurro});
-//players.push({name:"BOT BURRO 5",func:botBurro});
+players.push({name:"RANDOMIX_____1",func:botRandom});
+players.push({name:"RANDOMIX_____2",func:botRandom});
+players.push({name:"EXTREM-BURRO_1",func:botExtremamenteBurro});
+players.push({name:"EXTREM-BURRO_2",func:botExtremamenteBurro});
+players.push({name:"MUITO-BURRO__1",func:botMuitoBurro});
+players.push({name:"MUITO-BURRO__2",func:botMuitoBurro});
+players.push({name:"BURRO________1",func:botBurro});
+players.push({name:"BURRO________2",func:botBurro});
 
 //o resto é automático
 players.forEach(function(player,index){
