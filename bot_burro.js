@@ -2,7 +2,7 @@
 var botBurro = function(me,arena){
   var ret = 'up';
   var numAim = {};
-  var ultimaDistancia = arena.size.x*arena.size.y;
+  var ultimaDistancia = arena.size.x+arena.size.y;
   var menorDisponivel = arena.maxNum;
   var numsProximos = [];
 
@@ -48,7 +48,7 @@ var botBurro = function(me,arena){
     console.log("tem um número proximo aqui que eu quero evitar! Eu estou em "+me.pos.x+","+me.pos.y+" e o numero "+num.value+" em "+num.x+","+num.y);
     //se esta indo para esquerda, ve se tem numero la
     if(ret==='left') {
-      if(num.x > me.pos.x){
+      if(num.x < me.pos.x){
         console.log("o maldito está em "+ret);
         //vai pra cima ou para baixo
         ret = 'up';
@@ -57,7 +57,7 @@ var botBurro = function(me,arena){
       }
     }
     else if(ret==='right') {
-      if(num.x < me.pos.x){
+      if(num.x > me.pos.x){
         console.log("o maldito está em "+ret);
         //vai pra cima ou para baixo
         ret = 'up';
@@ -73,7 +73,7 @@ var botBurro = function(me,arena){
         if(me.pos.x < numAim.x) ret = 'right';
         console.log(me.name+" eu vou para "+ret);
       }
-    }
+      }
     else if(ret==='down') {
       if(num.y > me.pos.y){
         console.log("o maldito está em "+ret);

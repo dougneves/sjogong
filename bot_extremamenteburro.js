@@ -1,8 +1,8 @@
 //vai até o numero mais proximo dele
 var botExtremamenteBurro = function(me,arena){
   var ret = 'up';
-  var numAim = arena.num[0];
-  var ultimaDistancia = calculaDistancia(numAim.x,numAim.y,me.pos.x,me.pos.y);
+  var numAim = {};
+  var ultimaDistancia = arena.size.x+arena.size.y;
 
   //acha o numero mais proximo de me que ele pode pegar
   arena.num.forEach(function(num,index){

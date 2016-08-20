@@ -1,11 +1,10 @@
 var players = [];
 arena.players = players;
 
-
-//depois adiciona a funcao deles aqui, e da um nome
-//players.push({name:"RANDOMIX",func:botRandom});
-//players.push({name:"BOT EXTREM-BURRO",func:botExtremamenteBurro});
-//players.push({name:"BOT MUITO-BURRO",func:botMuitoBurro});
+//para cada bot, da um nome e fala qual é a function aqui
+players.push({name:"RANDOMIX",func:botRandom});
+players.push({name:"BOT EXTREM-BURRO",func:botExtremamenteBurro});
+players.push({name:"BOT MUITO-BURRO",func:botMuitoBurro});
 players.push({name:"BOT BURRO 1",func:botBurro});
 //players.push({name:"BOT BURRO 2",func:botBurro});
 //players.push({name:"BOT BURRO 3",func:botBurro});
