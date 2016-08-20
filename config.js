@@ -1,6 +1,6 @@
 var config = {
-  playersInterval: 10,
-  loopInterval: 10,
+  playersInterval: 5,
+  loopInterval: 6,
   colors: [
     '#0000FF',
     '#008000','#008080','#0080FF','#00FF00','#00FF80','#00FFFF',

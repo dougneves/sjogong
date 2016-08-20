@@ -35,7 +35,6 @@ var botBurro = function(me,arena){
     if(me.pos.y < numAim.y) ret = 'down';
     if(me.pos.x > numAim.x) ret = 'left';
     if(me.pos.x < numAim.x) ret = 'right';
-
   }
   else {
     if(me.pos.x > numAim.x) ret = 'left';
@@ -46,8 +45,7 @@ var botBurro = function(me,arena){
 
   //desvia dos numsProximos caso necessario
   numsProximos.forEach(function(num, index){
-    //console.log("tem um número proximo aqui que eu quero evitar! "+num.value+": "+num.x+","+num.y);
-
+    console.log("tem um número proximo aqui que eu quero evitar! Eu estou em "+me.pos.x+","+me.pos.y+" e o numero "+num.value+" em "+num.x+","+num.y);
     //se esta indo para esquerda, ve se tem numero la
     if(ret==='left') {
       if(num.x > me.pos.x){
@@ -88,6 +86,7 @@ var botBurro = function(me,arena){
   });
 
   //console.log(me.name+" eu vou para "+ret);
+  //console.log(me.name+" meu lastnum eh "+me.lastNum+" e eu estou indo atras de um numero "+numAim.value+" indo para "+ret);
 
   return ret;
 };
