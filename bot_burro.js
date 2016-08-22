@@ -45,45 +45,44 @@ var botBurro = function(me,arena){
 
   //desvia dos numsProximos caso necessario
   numsProximos.forEach(function(num, index){
-    console.log("tem um número proximo aqui que eu quero evitar! Eu estou em "+me.pos.x+","+me.pos.y+" e o numero "+num.value+" em "+num.x+","+num.y);
+    //console.log("tem um número proximo aqui que eu quero evitar! Eu estou em "+me.pos.x+","+me.pos.y+" e o numero "+num.value+" em "+num.x+","+num.y);
     //se esta indo para esquerda, ve se tem numero la
     if(ret==='left') {
       if(num.x < me.pos.x){
-        console.log("o maldito está em "+ret);
         //vai pra cima ou para baixo
         ret = 'up';
         if(me.pos.y < numAim.y) ret = 'down';
-        console.log(me.name+" eu vou para "+ret);
       }
     }
     else if(ret==='right') {
       if(num.x > me.pos.x){
-        console.log("o maldito está em "+ret);
         //vai pra cima ou para baixo
         ret = 'up';
         if(me.pos.y < numAim.y) ret = 'down';
-        console.log(me.name+" eu vou para "+ret);
       }
     }
     else if(ret==='up') {
       if(num.y < me.pos.y){
-        console.log("o maldito está em "+ret);
         //vai pra esq ou dir
         ret = 'left';
         if(me.pos.x < numAim.x) ret = 'right';
-        console.log(me.name+" eu vou para "+ret);
       }
-      }
+    }
     else if(ret==='down') {
       if(num.y > me.pos.y){
-        console.log("o maldito está em "+ret);
         //vai pra esq ou dir
         ret = 'left';
         if(me.pos.x < numAim.x) ret = 'right';
-        console.log(me.name+" eu vou para "+ret);
       }
     }
   });
+
+  //sometimes, when trying to avoid a number, he wants to walk to outside the arena
+  //lets avoid that behaviour:
+  if(me.pos.x === 0 && ret === 'left') ret = 'right';
+  if(me.pos.y === 0 && ret === 'up') ret = 'down';
+  if(me.pos.x === arena.size.x && ret === 'right') ret = 'left';
+  if(me.pos.y === arena.size.y && ret === 'down') ret = 'up';
 
   //console.log(me.name+" eu vou para "+ret);
   //console.log(me.name+" meu lastnum eh "+me.lastNum+" e eu estou indo atras de um numero "+numAim.value+" indo para "+ret);
