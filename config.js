@@ -3,8 +3,8 @@ var config = {
   maxNum: 9, //o maior numero que ira aparecer na arena
   qtdNum: 200, //a quantidade de cada um dos numeros que deve aparecer
   size: {x:800,y:480}, //tamanho do tabuleiro
-  playersInterval: 5,
-  loopInterval: 6,
+  playersInterval: 1000/25, //chama os players 25x por segundo
+  loopInterval: 1000/24, //atualiza 24x por segundo
   colors: [
     '#0000FF',
     '#008000','#008080','#0080FF','#00FF00','#00FF80','#00FFFF',

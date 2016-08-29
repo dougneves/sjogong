@@ -1,5 +1,9 @@
 //vai até o numero mais proximo dele
 var botExtremamenteBurro = function(me,arena){
+  var calculaDistancia = function(x1,y1,x2,y2){
+    return Math.abs(x1-x2)+Math.abs(y1-y2);
+  };
+
   var ret = 'up';
   var numAim = {};
   var ultimaDistancia = arena.size.x+arena.size.y;
@@ -26,8 +30,4 @@ var botExtremamenteBurro = function(me,arena){
 
 
   return ret;
-};
-
-var calculaDistancia = function(x1,y1,x2,y2){
-  return Math.abs(x1-x2)+Math.abs(y1-y2);
 };

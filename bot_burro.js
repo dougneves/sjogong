@@ -1,5 +1,9 @@
 //vai até o numero mais proximo dele, que seja o menor possível, e tenta desviar dos outros números enquando isso
 var botBurro = function(me,arena){
+  var calculaDistancia = function(x1,y1,x2,y2){
+    return Math.abs(x1-x2)+Math.abs(y1-y2);
+  };
+
   var ret = 'up';
   var numAim = {};
   var ultimaDistancia = arena.size.x+arena.size.y;
@@ -88,8 +92,4 @@ var botBurro = function(me,arena){
   //console.log(me.name+" meu lastnum eh "+me.lastNum+" e eu estou indo atras de um numero "+numAim.value+" indo para "+ret);
 
   return ret;
-};
-
-var calculaDistancia = function(x1,y1,x2,y2){
-  return Math.abs(x1-x2)+Math.abs(y1-y2);
 };

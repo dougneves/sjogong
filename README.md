@@ -43,14 +43,14 @@ This bot is named "Extremamente Burro", what in English means something like "Ex
 What it does is go to the number that was closest.
 Let's do a step by step:
 
-1. Create the bot function, here is the simplest possible
+### 1 Create the bot function, here is the simplest possible
 ```javascript
 var botExtremamenteBurro = function(me,arena){
   return 'up'; //it must return a string, 'up', 'down', 'left' or 'right'
 }
 ```
 
-2. Lets find where is the closest number, by looking to the distance of all numbers in the arena
+### 2 Lets find where is the closest number, by looking to the distance of all numbers in the arena
 ```javascript
 var numAim; //this is the number that I want
 var minorDistance = arena.size.x+arena.size.y; //you have to initialize it with the major distance possible in game
@@ -63,4 +63,24 @@ arena.num.forEach(function(num,index){ //for each number in the arena
 });
 ```
 
-3. Ok, now the bot knows what it wants (the number in numAim), but how to get there?
+### 3 Ok, now the bot knows what it wants (the number in numAim), but how to get there?
+```javascript
+if(me.pos.x > numAim.x)      direction = 'left';  //if the number has a X smaller than my position, let's go left!
+else if(me.pos.x < numAim.x) direction = 'right'; //or right
+else if(me.pos.y > numAim.y) direction = 'up';    //or up
+else if(me.pos.y < numAim.y) direction = 'down';  //or down
+```
+
+### 4 The return
+```javascript
+return direction;
+```
+
+## For whom this project was made
+For all who want to have fun programming a small specialist IA to battle with other small IAs experts.
+It's great to spend a challenge in a class or group of programmers, and see their specilists AIs battling the numbers. :)
+Me and my great friend Bruno Jesus (https://github.com/00cpxxx) have this idea in our Computer Science course at Mackenzie/São Paulo in 2004. The first version of this code was written in C.
+
+# And who are me?
+I'm Douglas Neves, a programmer living at the moment in Santos/Brasil, passionate about programming, javascript, web and games!
+You can contact me in the e-mail dougneves@gmail.com, I'll glad to talk to you :)
